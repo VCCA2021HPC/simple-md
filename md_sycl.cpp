@@ -210,7 +210,7 @@ int main()
                     0*dt,dt*timesteps,ek,ep,et);
    // Update forces 
    forceupdate(position, force, numparticles, sigma, epsilon);
-  start=seconds(NULL);
+  start=time(NULL);
    // Time stepping loop
    for(int n = 0; n < timesteps; n++)
    {
@@ -235,7 +235,7 @@ int main()
                     dt*(n+1),dt*timesteps,ek,ep,et);
      }
    }
-  stop=seconds(NULL);
+  stop=time(NULL);
   printf("WallClock time %ld/n",stop-start)
    return 0;
 }
