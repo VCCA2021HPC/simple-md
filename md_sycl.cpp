@@ -236,6 +236,6 @@ int main()
      }
    }
   stop=time(NULL);
-  printf("WallClock time %ld/n",stop-start)
+  printf("WallClock time %ld\n",stop-start);
    return 0;
 }
