@@ -66,16 +66,25 @@ The main level of parallelism available, is over the particles.
 
 See the file [md.c](md.c)
 ### Running on intel devcloud
-'''bash
+```bash
 git clone https://github.com/VCCA2021HPC/simple-md
 cd simple-md
 icx -lm md.c -o md
 echo "./md" > job.sh
 qsub -l nodes=1:gpu:ppn=2 -d . job.sh
-'''
+```
+
 ## Sycl implementation
 
 See the file [md_sycl.cpp](md_sycl.cpp)
+### Running on intel devcloud
+```bash
+git clone https://github.com/VCCA2021HPC/simple-md
+cd simple-md
+dpcpp md_sycl.cpp -o md_sycl
+echo "./md_sycl" > job_sycl.sh
+qsub -l nodes=1:gen9:ppn=2 -d . job_sycl.sh
+```
 
 ## Discussion
 
