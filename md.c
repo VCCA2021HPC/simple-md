@@ -55,7 +55,7 @@ void forceupdate(float *position, float *force,
 void positionupdate(float *position, float *velocity, 
                     float dt, int numparticles)
 {
-    for(int i = 0; i<numparticles; i++)
+    for(int i = 0; i < 3*numparticles; i++)
     {
       position[i] +=  dt * velocity[i];
     }
