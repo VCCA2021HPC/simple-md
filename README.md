@@ -65,7 +65,14 @@ The main level of parallelism available, is over the particles.
 ## Serial C implementation
 
 See the file [md.c](md.c)
-
+### Running on intel devcloud
+'''bash
+git clone https://github.com/VCCA2021HPC/simple-md
+cd simple-md
+icx -lm md.c -o md
+echo "./md" > job.sh
+qsub -l nodes=1:gpu:ppn=2 -d . job.sh
+'''
 ## Sycl implementation
 
 See the file [md_sycl.cpp](md_sycl.cpp)
