@@ -12,6 +12,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
+#include<time.h>
 
 void forceupdate(float *position, float *force, 
                 int numparticles, float sigma, float epsilon)
@@ -180,7 +181,9 @@ int main()
   float ek;
   float ep;
   float et;
-
+  time_t start;
+  time_t stop;
+  
   // Initialize random number generator
   srand(randinit);
   // Set initialize positions randomly
@@ -207,7 +210,7 @@ int main()
                     0*dt,dt*timesteps,ek,ep,et);
    // Update forces 
    forceupdate(position, force, numparticles, sigma, epsilon);
-
+  start=seconds(NULL);
    // Time stepping loop
    for(int n = 0; n < timesteps; n++)
    {
@@ -232,5 +235,7 @@ int main()
                     dt*(n+1),dt*timesteps,ek,ep,et);
      }
    }
+  stop=seconds(NULL);
+  printf("WallClock time %ld/n",stop-start)
    return 0;
 }
