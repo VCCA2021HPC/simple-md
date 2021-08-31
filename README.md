@@ -64,11 +64,11 @@ The main level of parallelism available, is over the particles.
 
 ## Serial C implementation
 
-See the file md.c
+See the file [md.c](md.c)
 
 ## Sycl implementation
 
-See the file md_sycl.cpp
+See the file [md_sycl.cpp](md_sycl.cpp)
 
 ## Discussion
 
