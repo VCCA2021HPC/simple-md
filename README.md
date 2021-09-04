@@ -65,25 +65,45 @@ The main level of parallelism available, is over the particles.
 ## Serial C implementation
 
 See the file [md.c](md.c)
-### Running on intel devcloud
-```bash
-git clone https://github.com/VCCA2021HPC/simple-md
-cd simple-md
-icx -lm md.c -o md
-echo "./md" > job.sh
-qsub -l nodes=1:gpu:ppn=2 -d . job.sh
-```
 
 ## Sycl implementation
 
 See the file [md_sycl.cpp](md_sycl.cpp)
+`
 ### Running on intel devcloud
+
+#### Build hipSYCL
 ```bash
+cd $HOME
 git clone https://github.com/VCCA2021HPC/simple-md
 cd simple-md
-dpcpp -lOpenCL -lsycl md_sycl.cpp -o md_sycl
-echo "./md_sycl" > job_sycl.sh
-qsub -l nodes=1:gen9:ppn=2 -d . job_sycl.sh
+qsub -l nodes=1:gen9:ppn=2 -d . get_hipSYCL.sh
+```
+
+#### Build programs with hipSYCL and execute
+
+Once the build has finished, compile and run the programs
+```bash
+cd $HOME/simple-md
+$HOME/hipSYCL-install/bin/syclcc -O3 md.c -o gcc_md
+echo "time ./gcc_md" > job.sh
+qsub -l nodes=1:gen9:ppn=2 -d . gcc_job.sh
+$HOME/hipSYCL-install/bin/syclcc -O3 md_sycl.c -o gcc_md_sycl
+echo "time ./gcc_md_sycl" > gcc_job_sycl.sh
+qsub -l nodes=1:gen9:ppn=2 -d . gcc_job_sycl.sh
+```
+
+#### Build programs with DPCPP and execute
+
+This is at present very slow when run in parallel
+```bash
+cd $HOME/simple-md
+dpcpp md.c -o dpcpp_md
+echo "time ./dpcpp_md" > dpcpp_job.sh
+qsub -l nodes=1:gen9:ppn=2 -d . dpcpp_job.sh
+dpcpp -lOpenCL -lsycl md_sycl.cpp -o dpcpp_md_sycl
+echo "time ./dpcpp_md_sycl" > job_sycl.sh
+qsub -l nodes=1:gen9:ppn=2 -d . dpcpp_job_sycl.sh
 ```
 
 ## Discussion
