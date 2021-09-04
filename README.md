@@ -81,7 +81,7 @@ See the file [md_sycl.cpp](md_sycl.cpp)
 ```bash
 git clone https://github.com/VCCA2021HPC/simple-md
 cd simple-md
-dpcpp md_sycl.cpp -o md_sycl
+dpcpp -lOpenCL -lsycl md_sycl.cpp -o md_sycl
 echo "./md_sycl" > job_sycl.sh
 qsub -l nodes=1:gen9:ppn=2 -d . job_sycl.sh
 ```
