@@ -118,7 +118,7 @@ float potentialenergy(float *position, float epsilon, float sigma, int numpartic
 int main()
 {
   // declare program parameters
-  const int numparticles=50;
+  const int numparticles=500;
   const float epsilon=1;
   const float sigma=0.1;
   const int timesteps=10000;
