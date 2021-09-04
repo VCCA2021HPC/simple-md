@@ -12,6 +12,7 @@ cd boost_1_77_0/
 cd ..
 git clone --recurse-submodules https://github.com/illuhad/hipSYCL
 cd hipSYCL/
+git checkout fe8465c
 mkdir build
 cd build/
 cmake -DCMAKE_INSTALL_PREFIX=$HOME/hipSYCL-install -DBOOST_ROOT=$HOME/boost_1_77_0-install -DCMAKE_C_COMPILER=icc -DCMAKE_CXX_COMPILER=icpc ..
