@@ -7,7 +7,7 @@ wget https://downloads.sourceforge.net/project/boost/boost/1.77.0/boost_1_77_0.t
 tar -xf boost_1_77_0.tar.gz
 cd boost_1_77_0/
 ./bootstrap.sh --prefix=$HOME/boost_1_77_0-install
-./b2 --build-dir=$HOME/boost_1_77_0-build toolset=gcc stage
+./b2 --build-dir=$HOME/boost_1_77_0-build toolset=intel stage
 ./b2 install --prefix=$HOME/boost_1_77_0-install --toolset=intel --build-type=complete --layout=versioned
 cd ..
 git clone --recurse-submodules https://github.com/illuhad/hipSYCL
