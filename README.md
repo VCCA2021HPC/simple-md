@@ -88,7 +88,7 @@ cd $HOME/simple-md
 $HOME/hipSYCL-install/bin/syclcc -O3 md.c -o gcc_md
 echo "time ./gcc_md" > gcc_job.sh
 qsub -l nodes=1:gen9:ppn=2 -d . gcc_job.sh
-echo "$HOME/hipSYCL-install/bin/syclcc -O3 md_sycl.c -o gcc_md_sycl" > compile_sycl.sh
+echo "$HOME/hipSYCL-install/bin/syclcc -O3 md_sycl.cpp -o gcc_md_sycl" > compile_sycl.sh
 qsub -l nodes=1:gen9:ppn=2 -d . compile_sycl.sh
 echo "time ./gcc_md_sycl" > gcc_job_sycl.sh
 qsub -l nodes=1:gen9:ppn=2 -d . gcc_job_sycl.sh
