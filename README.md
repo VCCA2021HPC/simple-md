@@ -41,11 +41,11 @@ F(r_ij) is the force between particle i and particle j.
 These equations of motion can be integrated in time using the [velocity
 verlet algorithm](https://en.wikipedia.org/wiki/Verlet_integration)
 
-   v_i^(n+1/2) = v_i^n + 0.5 x [delta t] x F_i^n
+   v_i^(n+1/2) = v_i^n + 0.5 x [delta t] x F_i^n/m
 
    x_i^(n+1) =  x_i^n ] + [delta t] x v_i^(n+1/2) 
 
-   v_i^(n+1) = v_i^(n+1/2) + [delta t] x F_i^(n+1)
+   v_i^(n+1) = v_i^(n+1/2) + [delta t] x F_i^(n+1)/m
 
 ## Pseudo code
 
